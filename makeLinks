@@ -1,0 +1,20 @@
+#!/bin/bash
+
+DOTFILES=$(dirname $0 | xargs readlink -e)
+
+for i in $(ls -A $DOTFILES/files) ; do
+    TARGET=${DOTFILES}/files/$i
+    LINK=${HOME}/$i
+    if [ -e ${LINK} ] ; then
+        if [ -h ${LINK} ] ; then
+            if [ "$(readlink -e ${LINK})" != "$(readlink -e ${TARGET})" ] ; then
+                echo "Warning: The link ${LINK} already exists, but links to $(readlink -e ${LINK}) -- remove the link and run this script again"
+            fi
+        else
+            echo "Warning: ${LINK} is an existing file -- remove it and run this script again"
+        fi
+    else
+        echo "Linking ${LINK} -> ${TARGET}"
+        ln -s ${TARGET} ${LINK}
+    fi
+done

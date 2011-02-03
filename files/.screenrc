@@ -1,0 +1,40 @@
+#caption always
+#caption string ".%{kB}%?%-Lw%?%{bw}%n*%f %t%?(%u)%?%{kB}%?%+Lw%?."
+
+# Status and caption at the bottom of the terminal
+hardstatus on
+hardstatus alwayslastline
+backtick 1 60 60 echo $USER
+hardstatus string "%{= g}%1`@%H %{-} %= %n%f %t %? [ %h ]%?%? (%u)%? %=%{= kG}%{-}"
+
+
+# caption string:
+#   %{           start colour/attribute modifier
+#     =          change attributes to set
+#     k          black background
+#     W          bright white foreground
+#   }
+caption string '%{= kW}%-Lw%{+ G}%50L> %n%f* %t%{+ W}%+Lw%< %{+ G}%-=%D %d %M %Y  %c:%s%{-}'
+caption always
+
+startup_message off
+
+bindkey ^[^[[C next
+bindkey ^[^[[D prev
+
+# setup 20,000 lines of available scrollback — copy/paste
+defscrollback 20000
+
+# fix scrollback in putty
+termcapinfo xterm* ti@:te@:XT
+
+# Support alternate screens so that, for example, when you 
+# quit out of vi, the display is redrawn as it was before vi
+# redrew the full screen.
+altscreen on
+
+autodetach on
+
+vbell off
+
+shelltitle '$ |bash' 

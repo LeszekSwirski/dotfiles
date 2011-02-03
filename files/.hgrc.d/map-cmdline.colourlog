@@ -1,0 +1,27 @@
+changeset = '\033[0;33m{rev}\033[0m{parents}{branches}{tags}  \33[1;30m{date|age} by {author|person}\033[0m\n{desc|nonempty|fill76|strip}\n\n'
+changeset_quiet = '{rev}:{node|short}\n'
+changeset_verbose = '\033[0;33m{rev}\033[0m <\033[0;33m{node|short}\033[0m>{parents}{branches}{tags}\n{desc|nonempty|fill76|strip}\n\33[1;30m{date|rfc822date}, {author}\033[0m\n\n{file_mods}{file_adds}{file_dels}\n\n'
+
+start_file_adds = ''
+file_add = '\033[0;32mA {file_add}\033[0m\n'
+end_file_adds = ''
+
+start_file_dels = ''
+file_del = '\033[0;31mR {file_del}\033[0m\n'
+end_file_dels = ''
+
+start_file_mods = ''
+file_mod = '\033[0;36mM {file_mod}\033[0m\n'
+end_file_mods = ''
+
+start_branches = ' <'
+branch = '\033[0;35m{branch}\033[0m, '
+last_branch = '\033[0;35m{branch}\033[0m>'
+
+start_parents = ':\033[0;33m'
+parent = '{rev},'
+last_parent = '{rev}\033[0m'
+
+start_tags = ' ['
+tag = '\033[0;33m{tag}\033[0m, '
+last_tag = '\033[0;33m{tag}\033[0m]'

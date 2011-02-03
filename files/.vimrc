@@ -67,9 +67,11 @@ function! SilentUpdateTags()
 endfunction
 
 
-noremap <silent> <F12> :call UpdateTags()<CR>
-inoremap <silent> <F12> <C-O>:call UpdateTags()<CR>
-autocmd! BufWrite,CursorHold *.{c,cpp,h,hpp} call SilentUpdateTags()
+if !has('windows')
+    noremap <silent> <F12> :call UpdateTags()<CR>
+    inoremap <silent> <F12> <C-O>:call UpdateTags()<CR>
+    autocmd! BufWrite,CursorHold *.{c,cpp,h,hpp} call SilentUpdateTags()
+endif
 
 set tags+=tags;/
 set tagrelative
@@ -81,10 +83,17 @@ let g:GetLatestVimScripts_allowautoinstall=1
 
 
 " Clang completion
-let g:clang_use_library=1
-let g:clang_complete_auto=1
-let g:clang_complete_copen=1
-let g:clang_periodic_quickfix=1
+if has('windows')
+    let g:clang_use_library=0
+    let g:clang_complete_auto=0
+    let g:clang_complete_copen=0
+    let g:clang_periodic_quickfix=0
+else
+    let g:clang_use_library=1
+    let g:clang_complete_auto=1
+    let g:clang_complete_copen=1
+    let g:clang_periodic_quickfix=1
+endif
 
 
 " YankRing

@@ -20,5 +20,8 @@ opts.vimdiff= -f '+next' '+execute "DirDiff" argv(0) argv(1)'
 delay = 0.5
 
 [merge-tools]
+kdiff3.priority=10
+
+vimdiff.priority=5
 vimdiff.executable = vim
 vimdiff.args = -f -d $base $local $other -c "3 wincmd l" -c "wincmd J" $output

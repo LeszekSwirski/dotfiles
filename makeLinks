@@ -1,10 +1,15 @@
 #!/bin/bash
 
 DOTFILES=$(dirname $0 | xargs readlink -e)
+if [ -z $1 ] ; then
+	LINKDIR=${HOME}
+else
+	LINKDIR=$(readlink -e $1)
+fi
 
 for i in $(ls -A $DOTFILES/files) ; do
     TARGET=${DOTFILES}/files/$i
-    LINK=${HOME}/$i
+    LINK=${LINKDIR}/$i
     if [ -e ${LINK} ] ; then
         if [ -h ${LINK} ] ; then
             if [ "$(readlink -e ${LINK})" != "$(readlink -e ${TARGET})" ] ; then

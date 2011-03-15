@@ -11,7 +11,7 @@ syn keyword msgRepeat     list map
 
 syn keyword msgType      int8 int16 int32 uint8 uint16 uint32
 syn keyword msgType      float bool string byte
-syn keyword msgTypedef   struct enum
+syn keyword msgTypedef   struct enum variant
 
 syn match   msgInt     /-\?\<\d\+\>/
 

@@ -67,7 +67,7 @@ function! SilentUpdateTags()
 endfunction
 
 
-if !has('windows')
+if !has('win32')
     noremap <silent> <F12> :call UpdateTags()<CR>
     inoremap <silent> <F12> <C-O>:call UpdateTags()<CR>
     autocmd! BufWrite,CursorHold *.{c,cpp,h,hpp} call SilentUpdateTags()
@@ -83,16 +83,16 @@ let g:GetLatestVimScripts_allowautoinstall=1
 
 
 " Clang completion
-if has('windows')
+if has('win32')
     let g:clang_use_library=0
     let g:clang_complete_auto=0
     let g:clang_complete_copen=0
     let g:clang_periodic_quickfix=0
 else
-    let g:clang_use_library=1
-    let g:clang_complete_auto=1
-    let g:clang_complete_copen=1
-    let g:clang_periodic_quickfix=1
+    "let g:clang_use_library=1
+    "let g:clang_complete_auto=1
+    "let g:clang_complete_copen=1
+    "let g:clang_periodic_quickfix=1
 endif
 
 

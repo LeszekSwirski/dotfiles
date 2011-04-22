@@ -1,0 +1,21 @@
+#!/bin/bash
+
+DOTFILES=$(dirname $0 | xargs readlink -e)
+
+for i in $(find ~/.dotfiles/files \( -name .git -o -name .hg -o -name .svn \) -prune -exec dirname {} \;) ; do
+    
+    cd $i
+    if [ -e $i/.git ] ; then
+        echo Updating git repository for $i
+        git pull
+    fi
+    if [ -e $i/.hg ] ; then
+        echo Updating hg repository for $i
+        hg pull
+        hg update
+    fi
+    if [ -e $i/.svn ] ; then
+        echo Updating svn repository for $i
+        svn update
+    fi
+done

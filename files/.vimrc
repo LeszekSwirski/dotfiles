@@ -56,18 +56,18 @@ inoremap <silent> <F8> <C-O>:TlistToggle<CR>
 " Omnicomplete
 inoremap <Nul> <C-x><C-o>
 
-function! UpdateTags() 
-    silent !echo
-    silent !update-tags
-    redraw!
-    echo system("update-tags -nq")
-endfunction
-function! SilentUpdateTags() 
-    silent !update-tags -nq >/dev/null 2>/dev/null &
-endfunction
-
-
 if !has('win32')
+    function! UpdateTags() 
+        silent !echo
+        silent !update-tags
+        redraw!
+        echo system("update-tags -nq")
+    endfunction
+    function! SilentUpdateTags() 
+        silent !update-tags -nq >/dev/null 2>/dev/null &
+    endfunction
+
+
     noremap <silent> <F12> :call UpdateTags()<CR>
     inoremap <silent> <F12> <C-O>:call UpdateTags()<CR>
     autocmd! BufWrite,CursorHold *.{c,cpp,h,hpp} call SilentUpdateTags()
@@ -97,8 +97,8 @@ endif
 
 
 " YankRing
-let g:yankring_replace_n_pkey = '<C-,>'
-let g:yankring_replace_n_nkey = '<C-.>'
+let g:yankring_replace_n_pkey = '<M-n>'
+let g:yankring_replace_n_nkey = '<M-p>'
 nnoremap <silent> <F11> :YRShow<CR>
 
 

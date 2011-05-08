@@ -1,6 +1,6 @@
 " Name:          inccomplete
 " Author:        xaizek (xaizek@gmail.com)
-" Version:       1.3.15
+" Version:       1.3.19
 "
 " Description:   This is a completion plugin for C/C++/ObjC/ObjC++ preprocessors
 "                include directive. It can be used along with clang_complete
@@ -36,6 +36,11 @@
 "                right after open bracket was pressed. Otherwise it will be
 "                added after completion is over.
 "
+"                g:inccomplete_sort - how to sort completion list
+"                default: ''
+"                When this option equals 'ignorecase' the case of letters of
+"                filenames will be ignored.
+"
 " ToDo:          - Maybe 'path' option should be replaced with some global
 "                  variable like g:inccomplete_incpath?
 "                - Is it possible to do file searching using only VimL?
@@ -56,6 +61,10 @@ endif
 
 if !exists('g:inccomplete_addclosebracket')
     let g:inccomplete_addclosebracket = 'always'
+endif
+
+if !exists('g:inccomplete_sort')
+    let g:inccomplete_sort = ''
 endif
 
 autocmd FileType c,cpp,objc,objcpp call s:ICInit()
@@ -125,7 +134,7 @@ function! ICComplete(findstart, base)
         let l:pos = match(getline('.'), '<\|"')
         let l:bracket = getline('.')[l:pos : l:pos]
         let l:inclst = s:ICGetList(l:bracket == '"', a:base)
-        let l:inclst = s:ICFilterIncLst(l:inclst, a:base)
+        let l:inclst = s:ICFilterIncLst(l:bracket == '"', l:inclst, a:base)
 
         if g:inccomplete_addclosebracket != 'always'
             " determine close bracket
@@ -148,12 +157,30 @@ function! ICComplete(findstart, base)
                         \}
             call add(l:comlst, l:item)
         endfor
-        return l:comlst
+
+        return sort(l:comlst, 's:ListComparer')
     endif
 endfunction
 
+" comparers for sorting completion list
+function s:ListComparer(i1, i2)
+    if g:inccomplete_sort == 'ignorecase'
+        return s:IgnoreCaseComparer(a:i1, a:i2)
+    else
+        return s:Comparer(a:i1, a:i2)
+    endif
+endfunction
+function s:IgnoreCaseComparer(i1, i2)
+    return a:i1['abbr'] == a:i2['abbr'] ? 0 :
+                \ (a:i1['abbr'] > a:i2['abbr'] ? 1 : -1)
+endfunction
+function s:Comparer(i1, i2)
+    return a:i1['abbr'] ==# a:i2['abbr'] ? 0 :
+                \ (a:i1['abbr'] ># a:i2['abbr'] ? 1 : -1)
+endfunction
+
 " filters search results
-function! s:ICFilterIncLst(inclst, base)
+function! s:ICFilterIncLst(user, inclst, base)
     let l:iswindows = has('win16') || has('win32') || has('win64') ||
                 \ has('win95') || has('win32unix')
 
@@ -162,7 +189,7 @@ function! s:ICFilterIncLst(inclst, base)
     let l:pos = strridx(a:base, '/')
     let l:sl1 = '/'
     let l:sl2 = '/'
-    if (len(a:base) == 0 && l:iswindows) || (len(a:base) != 0 && l:pos < 0)
+    if l:iswindows && (len(a:base) == 0 || (len(a:base) != 0 && l:pos < 0))
         let l:pos = strridx(a:base, '\')
         let l:sl1 = '\\\\'
         let l:sl2 = '\'
@@ -182,9 +209,17 @@ function! s:ICFilterIncLst(inclst, base)
     if l:pos >= 0
         " filter by subdirectory name
         let l:dirend0 = a:base[:l:pos]
-        let l:dirend1 = fnamemodify(l:dirend0, ':p')
+        if a:user
+            let l:dirend1 = fnamemodify(l:dirend0, ':p')
+        else
+            let l:dirend1 = l:dirend0
+        endif
         let l:dirend2 = escape(l:dirend1, '\')
-        call filter(l:inclst, 'v:val[0] =~ "^".l:dirend2')
+        if a:user
+            call filter(l:inclst, 'v:val[0] =~ "^".l:dirend2')
+        else
+            call filter(l:inclst, 'v:val[0] =~ "'.l:sl1.'".l:dirend2."$"')
+        endif
 
         " move end of each path to the beginning of filename
         let l:cutidx = - (l:pos + 2)
@@ -223,7 +258,7 @@ function! s:ICGetList(user, base)
                \ 'add(l:result, [l:incpath, v:val])')
     endfor
 
-    return sort(l:result)
+    return l:result
 endfunction
 
 " gets list of header files using find

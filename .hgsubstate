@@ -1,1 +1,4 @@
+ca0ce8fcc49a09eca7eb8ff8003554de2f250901 files/.vim/bundle/DirDiff.vim
 66a6fb05a1296eea4a6452368d0cc93b2670f574 files/.vim/bundle/clang_complete
+0a38ef4fbaaeb6c79097bc02cfe67922f09e3da4 files/.vim/bundle/vim-inccomplete
+8c46ed160e3b94ea39b5742da55b6d4574774f19 files/.vim/vim-pathogen

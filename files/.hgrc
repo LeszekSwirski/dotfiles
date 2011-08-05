@@ -4,6 +4,7 @@ username = Leszek Swirski <ls426@cam.ac.uk>
 
 [trusted]
 users = jc593 jw682
+groups = cauv
 
 [extensions]
 fetch=

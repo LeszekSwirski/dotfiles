@@ -1,52 +1,9 @@
-" Name:          inccomplete
-" Author:        xaizek (xaizek@gmail.com)
-" Version:       1.3.19
+" Name:    inccomplete
+" Author:  xaizek (xaizek@gmail.com)
+" Version: 1.3.20
+" License: Same terms as Vim itself (see :help license)
 "
-" Description:   This is a completion plugin for C/C++/ObjC/ObjC++ preprocessors
-"                include directive. It can be used along with clang_complete
-"                (http://www.vim.org/scripts/script.php?script_id=3302) plugin.
-"                And maybe with some others that I haven't tested.
-"
-"                It can complete both "" and <> forms of #include.
-"                For "" it gets all header files in the current directory (so
-"                it's assumed that you have something similar to
-"                autocmd BufEnter,BufWinEnter * lcd %:p:h
-"                in your .vimrc).
-"                And for <> it gets all files that have hpp or h extensions or
-"                don't have any.
-"
-"                Only files of include directories are displayed in completion
-"                list, but you can complete files in subdirectories of include
-"                directories too. All you need is to call completion again after
-"                typing subdirectory name and slash (and maybe beginning of
-"                file name).
-"
-" Configuration: g:inccomplete_findcmd - command to run GNU find program
-"                default: 'find'
-"                Note: On Windows you need to have Cygwin installed and to set
-"                      full path to find utility. For example, like this:
-"                      let g:inccomplete_findcmd = 'c:/cygwin/bin/find'
-"                      Or it can be any find utility that accepts the following
-"                      parameters and multiple search paths:
-"                      -maxdepth 1 -type f
-"
-"                g:inccomplete_addclosebracket - how to add close bracket
-"                default: 'always'
-"                When this option equals 'always' close bracket will be added
-"                right after open bracket was pressed. Otherwise it will be
-"                added after completion is over.
-"
-"                g:inccomplete_sort - how to sort completion list
-"                default: ''
-"                When this option equals 'ignorecase' the case of letters of
-"                filenames will be ignored.
-"
-" ToDo:          - Maybe 'path' option should be replaced with some global
-"                  variable like g:inccomplete_incpath?
-"                - Is it possible to do file searching using only VimL?
-"                - Maybe '.' in path should be automatically replaced with the
-"                  path to current buffer instead of assuming that working
-"                  directory is correct?
+" See :help inccomplete for documentation.
 
 if exists("g:loaded_inccomplete")
     finish
@@ -158,16 +115,16 @@ function! ICComplete(findstart, base)
             call add(l:comlst, l:item)
         endfor
 
-        return sort(l:comlst, 's:ListComparer')
+        return s:SortList(l:comlst)
     endif
 endfunction
 
-" comparers for sorting completion list
-function s:ListComparer(i1, i2)
+" sorts completion list
+function s:SortList(lst)
     if g:inccomplete_sort == 'ignorecase'
-        return s:IgnoreCaseComparer(a:i1, a:i2)
+        return sort(a:lst, 's:IgnoreCaseComparer')
     else
-        return s:Comparer(a:i1, a:i2)
+        return sort(a:lst, 's:Comparer')
     endif
 endfunction
 function s:IgnoreCaseComparer(i1, i2)

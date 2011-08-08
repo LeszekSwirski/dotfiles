@@ -89,12 +89,13 @@ if has('win32')
     let g:clang_complete_copen=0
     let g:clang_periodic_quickfix=0
 else
-    "let g:clang_use_library=1
-    "let g:clang_complete_auto=1
-    "let g:clang_complete_copen=1
-    "let g:clang_periodic_quickfix=1
+    let g:clang_use_library=1
+    let g:clang_complete_auto=1
+    let g:clang_complete_copen=1
+    let g:clang_periodic_quickfix=0
 endif
 
+set path+=/usr/local/include
 
 " YankRing
 let g:yankring_replace_n_pkey = '<M-n>'

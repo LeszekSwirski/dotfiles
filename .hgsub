@@ -4,3 +4,4 @@ files/.vim/bundle/DirDiff.vim = [git]https://github.com/vim-scripts/DirDiff.vim.
 files/.vim/bundle/vim-inccomplete = [git]https://github.com/xaizek/vim-inccomplete.git
 files/.vim/bundle/vim-afterimage = [git]https://github.com/tpope/vim-afterimage.git
 files/.vim/bundle/vim-abolish = [git]https://github.com/tpope/vim-abolish.git
+files/.vim/bundle/vim-surround = [git]https://github.com/tpope/vim-surround.git

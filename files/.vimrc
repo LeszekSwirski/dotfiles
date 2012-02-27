@@ -1,8 +1,6 @@
 " Load plugins
-filetype off
 call pathogen#infect()
 Helptags
-filetype plugin on
 syntax on
 
 
@@ -83,15 +81,15 @@ let g:GetLatestVimScripts_allowautoinstall=1
 
 
 " Clang completion
-if has('win32')
-    let g:clang_use_library=0
-    let g:clang_complete_auto=0
-    let g:clang_complete_copen=0
-    let g:clang_periodic_quickfix=0
-else
+if executable('clang')
     let g:clang_use_library=1
     let g:clang_complete_auto=1
     let g:clang_complete_copen=1
+    let g:clang_periodic_quickfix=0
+else
+    let g:clang_use_library=0
+    let g:clang_complete_auto=0
+    let g:clang_complete_copen=0
     let g:clang_periodic_quickfix=0
 endif
 
@@ -153,6 +151,10 @@ endif
 if $TERM=='screen' || $TERM=='xterm' || $TERM=='gnome-256color'
 	set ttymouse=xterm2
     set bg=dark
+endif
+
+if has('win32')
+    set directory=.,$TEMP
 endif
 
 "if $TERM=='gnome-256color'

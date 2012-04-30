@@ -1,7 +1,9 @@
 ca0ce8fcc49a09eca7eb8ff8003554de2f250901 files/.vim/bundle/DirDiff.vim
-cfe53bc6eb00ca0bfd5010b34b455844dc694b7f files/.vim/bundle/clang_complete
-1321684bc3699f5636d3a4d4cf89a329e7c0c8da files/.vim/bundle/vim-abolish
+4162272b914d93a780dcad45a0dbc63577c41d82 files/.vim/bundle/clang_complete
+d92c8b01248d612444829001b3e081629d37a1aa files/.vim/bundle/minibufexpl.vim
+f8829a5f3e5a2a9c5e8a17f322aa9296a0cdb622 files/.vim/bundle/vim-abolish
 6d5527d2fe337324c4b125a2d3b45e20df16f94d files/.vim/bundle/vim-afterimage
-9bdb1ad4e46ed79c9ecfc01a838aee70f8d91c83 files/.vim/bundle/vim-inccomplete
-4eb2cdfccc016889acfa3b5d63e8f390a87863cf files/.vim/bundle/vim-surround
+44b04871f812418ac0fe7b38e59222de118d07cb files/.vim/bundle/vim-easytags
+e8bca2345d12ac8a6156e9d41568659e72bbcac8 files/.vim/bundle/vim-inccomplete
+489a1e8c676ad47dd358dbf883bfaf492148d38b files/.vim/bundle/vim-surround
 c9fb89dd6efdeedb95c411ec78b3a9493602d33d files/.vim/vim-pathogen

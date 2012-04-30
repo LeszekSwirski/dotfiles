@@ -39,7 +39,7 @@ set spelllang=en_gb
 set completeopt=menu,preview,longest
 
 " Change directory to current file's
-" autocmd! BufEnter * lcd %:p:h 
+" autocmd! BufEnter * lcd %:p:h
 
 
 " Stupid typo
@@ -80,6 +80,7 @@ set makeprg=rmake
 let g:GetLatestVimScripts_allowautoinstall=1
 
 
+
 " Clang completion
 if executable('clang')
     let g:clang_use_library=1
@@ -100,20 +101,6 @@ let g:yankring_replace_n_pkey = '<M-n>'
 let g:yankring_replace_n_nkey = '<M-p>'
 nnoremap <silent> <F11> :YRShow<CR>
 
-
-" set tags+=~/.tags/cpp
-"let OmniCpp_NamespaceSearch = 1
-"let OmniCpp_GlobalScopeSearch = 1
-"let OmniCpp_ShowAccess = 1
-"let OmniCpp_MayCompleteDot = 1
-"let OmniCpp_MayCompleteArrow = 1
-"let OmniCpp_MayCompleteScope = 1
-"let OmniCpp_ShowPrototypeInAbbr = 1
-"let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" automatically open and close the popup menu / preview window
-"au! CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-"set completeopt=menuone,menu,preview,longest
-
 " Taglist
 let Tlist_Exit_OnlyWindow = 1
 
@@ -125,23 +112,21 @@ imap <M-k> <Esc>:m-2<CR>==gi
 vmap <M-j> :m'>+<CR>gv=`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 
-" Window
-"noremap <C-J> <C-W>j
-"noremap <C-K> <C-W>k
-"noremap <C-H> <C-W>h
-"noremap <C-L> <C-W>l
+" Renamer
+let g:RenamerSupportColonWToRename = 1
 
+" MiniBufExplorer 
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplUseSingleClick = 1
 
-nnoremap <silent> <c-n> :bn<cr>
-vnoremap <silent> <c-n> :bn<cr>
-inoremap <silent> <c-n> <c-o>:bn<cr>
-nnoremap <silent> <c-p> :bp<cr>
-vnoremap <silent> <c-p> :bp<cr>
-inoremap <silent> <c-p> <c-o>:bp<cr>
+nnoremap <silent> <c-n> :MBEbn<cr>
+vnoremap <silent> <c-n> :MBEbn<cr>
+inoremap <silent> <c-n> <c-o>:MBEbn<cr>
+nnoremap <silent> <c-p> :MBEbp<cr>
+vnoremap <silent> <c-p> :MBEbp<cr>
+inoremap <silent> <c-p> <c-o>:MBEbp<cr>
 
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"

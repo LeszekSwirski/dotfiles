@@ -1,2 +1,4 @@
 --smart-case
 --sort-files
+--type-set
+cmake=.cmake,CMakeLists.txt

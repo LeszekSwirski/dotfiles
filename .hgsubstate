@@ -1,5 +1,6 @@
 ca0ce8fcc49a09eca7eb8ff8003554de2f250901 files/.vim/bundle/DirDiff.vim
 4162272b914d93a780dcad45a0dbc63577c41d82 files/.vim/bundle/clang_complete
+e61e7d5b801ade5fcefeab3aca75c1f37d54bdf1 files/.vim/bundle/ctrlp.vim
 d92c8b01248d612444829001b3e081629d37a1aa files/.vim/bundle/minibufexpl.vim
 f8829a5f3e5a2a9c5e8a17f322aa9296a0cdb622 files/.vim/bundle/vim-abolish
 6d5527d2fe337324c4b125a2d3b45e20df16f94d files/.vim/bundle/vim-afterimage

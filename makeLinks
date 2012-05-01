@@ -1,15 +1,8 @@
 #!/bin/bash
 
-DOTFILES=$(dirname $0 | xargs readlink -e)
-if [ -z $1 ] ; then
-	LINKDIR=${HOME}
-else
-	LINKDIR=$(readlink -e $1)
-fi
-
-for i in $(ls -A $DOTFILES/files) ; do
-    TARGET=${DOTFILES}/files/$i
-    LINK=${LINKDIR}/$i
+dolink() {
+    local LINK=$1
+    local TARGET=$2
     if [ -e ${LINK} ] ; then
         if [ -h ${LINK} ] ; then
             if [ "$(readlink -e ${LINK})" != "$(readlink -e ${TARGET})" ] ; then
@@ -22,4 +15,19 @@ for i in $(ls -A $DOTFILES/files) ; do
         echo "Linking ${LINK} -> ${TARGET}"
         ln -s ${TARGET} ${LINK}
     fi
+}
+
+
+DOTFILES=$(dirname $0 | xargs readlink -e)
+if [ -z $1 ] ; then
+	LINKDIR=${HOME}
+else
+	LINKDIR=$(readlink -e $1)
+fi
+
+dolink "${DOTFILES}/files/.vim/autoload" "${DOTFILES}/files/.vim/vim-pathogen/autoload"
+for i in $(ls -A $DOTFILES/files) ; do
+    TARGET=${DOTFILES}/files/$i
+    LINK=${LINKDIR}/$i
+    dolink "${LINK}" "${TARGET}"
 done

@@ -128,6 +128,18 @@ nnoremap <silent> <c-p> :MBEbp<cr>
 vnoremap <silent> <c-p> :MBEbp<cr>
 inoremap <silent> <c-p> <c-o>:MBEbp<cr>
 
+" Easytags
+let g:easytags_dynamic_files=1
+"let g:easytags_autorecurse=1
+let g:easytags_python_enabled=1
+let g:easytags_on_cursorhold = 0
+
+noremap <silent> <F12> :UpdateTags<CR>:HighlightTags<CR>
+inoremap <silent> <F12> <C-O>:UpdateTags<CR>:HighlightTags<CR>
+
+" Ctrl-P
+let g:ctrlp_map = '<c-f>'
+
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"
 	exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"

@@ -7,3 +7,4 @@ files/.vim/bundle/vim-abolish = [git]https://github.com/tpope/vim-abolish.git
 files/.vim/bundle/vim-surround = [git]https://github.com/tpope/vim-surround.git
 files/.vim/bundle/minibufexpl.vim = [git]https://github.com/fholgado/minibufexpl.vim.git
 files/.vim/bundle/vim-easytags = [git]https://github.com/xolox/vim-easytags.git
+files/.vim/bundle/ctrlp.vim = [git] https://github.com/kien/ctrlp.vim.git

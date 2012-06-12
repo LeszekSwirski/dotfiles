@@ -1,4 +1,5 @@
 " Load plugins
+runtime vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 Helptags
 syntax on

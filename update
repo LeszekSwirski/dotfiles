@@ -19,18 +19,18 @@ def main():
                 vcs = "hg"
             url = m.group(3)
             
-            print "%s = [%s] %s" % (path,vcs,url)
+            print("%s = [%s] %s" % (path,vcs,url))
 
             parent = os.path.dirname(path)
 
             if not os.path.exists(parent):
-                print "Creating directory: %s" % parent
+                print("Creating directory: %s" % parent)
                 os.makedirs(parent)
 
             if vcs == "git":
                 if not os.path.exists(os.path.join(path, ".git")):
                     if os.path.exists(path):
-                        print "Deleting invalid subrepository folder: %s" % path
+                        print("Deleting invalid subrepository folder: %s" % path)
                         shutil.rmtree(path)
                     subprocess.call(["git", "clone", url], cwd=parent)
                 else:
@@ -40,7 +40,7 @@ def main():
             elif vcs == "svn":
                 if not os.path.exists(os.path.join(path, ".svn")):
                     if os.path.exists(path):
-                        print "Deleting invalid subrepository folder: %s" % path
+                        print("Deleting invalid subrepository folder: %s" % path)
                         shutil.rmtree(path)
                     subprocess.call(["svn", "checkout", url], cwd=parent)
                 else:
@@ -49,14 +49,14 @@ def main():
             elif vcs == "hg":
                 if not os.path.exists(os.path.join(path, ".hg")):
                     if os.path.exists(path):
-                        print "Deleting invalid subrepository folder: %s" % path
+                        print("Deleting invalid subrepository folder: %s" % path)
                         shutil.rmtree(path)
                     subprocess.call(["hg", "clone", url], cwd=parent)
                 else:
                     subprocess.call(["hg", "pull", "-u"], cwd=path)
 
             else:
-                print "Unknown repository type: %s" % vcs
+                print("Unknown repository type: %s" % vcs)
                 pass
 
     

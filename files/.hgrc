@@ -12,6 +12,7 @@ extdiff=
 color=
 graphlog=
 pager=
+rebase=
 
 [extdiff]
 cmd.vimdiff=vim

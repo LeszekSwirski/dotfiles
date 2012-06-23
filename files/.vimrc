@@ -42,6 +42,8 @@ set completeopt=menu,preview,longest
 " Change directory to current file's
 " autocmd! BufEnter * lcd %:p:h
 
+" Easily access file's current directory on the cmdline
+cabbr <expr> %% expand('%:p:h')
 
 " Stupid typo
 command! WQ wq
@@ -54,23 +56,6 @@ inoremap <silent> <F8> <C-O>:TlistToggle<CR>
 
 " Omnicomplete
 inoremap <Nul> <C-x><C-o>
-
-if !has('win32')
-    function! UpdateTags() 
-        silent !echo
-        silent !update-tags
-        redraw!
-        echo system("update-tags -nq")
-    endfunction
-    function! SilentUpdateTags() 
-        silent !update-tags -nq >/dev/null 2>/dev/null &
-    endfunction
-
-
-    noremap <silent> <F12> :call UpdateTags()<CR>
-    inoremap <silent> <F12> <C-O>:call UpdateTags()<CR>
-    autocmd! BufWrite,CursorHold *.{c,cpp,h,hpp} call SilentUpdateTags()
-endif
 
 set tags+=tags;/
 set tagrelative
@@ -121,6 +106,7 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplUseSingleClick = 1
+let g:miniBufExplCheckDupeBufs = 0
 
 nnoremap <silent> <c-n> :MBEbn<cr>
 vnoremap <silent> <c-n> :MBEbn<cr>

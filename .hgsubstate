@@ -1,6 +1,7 @@
+51352cc765894d973870e39bb3080f1fb63b14c8 files/.vim/bundle/Cpp11-Syntax-Support
 ca0ce8fcc49a09eca7eb8ff8003554de2f250901 files/.vim/bundle/DirDiff.vim
-71b66746f94955d4577af1aebc20a6574fa2e297 files/.vim/bundle/clang_complete
-28d5e6f2cba53db3c48b576cee02265a49dbc5df files/.vim/bundle/ctrlp.vim
+95ccca1c768991a274feb99078ea4fa805637b39 files/.vim/bundle/clang_complete
+4e38004029c50ae22a0e32432ff5f5a0893910fc files/.vim/bundle/ctrlp.vim
 d92c8b01248d612444829001b3e081629d37a1aa files/.vim/bundle/minibufexpl.vim
 f8829a5f3e5a2a9c5e8a17f322aa9296a0cdb622 files/.vim/bundle/vim-abolish
 6d5527d2fe337324c4b125a2d3b45e20df16f94d files/.vim/bundle/vim-afterimage

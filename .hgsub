@@ -8,4 +8,5 @@ files/.vim/bundle/vim-surround = [git]https://github.com/tpope/vim-surround.git
 files/.vim/bundle/minibufexpl.vim = [git]https://github.com/fholgado/minibufexpl.vim.git
 files/.vim/bundle/vim-easytags = [git]https://github.com/xolox/vim-easytags.git
 files/.vim/bundle/ctrlp.vim = [git] https://github.com/kien/ctrlp.vim.git
+files/.vim/bundle/Cpp11-Syntax-Support = [git]https://github.com/proyvind/Cpp11-Syntax-Support.git
 files/.vim/bundle/vim-shell = [git] https://github.com/xolox/vim-shell.git

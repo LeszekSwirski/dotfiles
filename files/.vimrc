@@ -54,6 +54,17 @@ command! Q q
 noremap <silent> <F8> :TlistToggle<CR>
 inoremap <silent> <F8> <C-O>:TlistToggle<CR>
 
+" Easy save & make
+nmap M :<C-U>exec ':wa\|make -j'. v:count1<CR>
+
+" Restore visual selection after indent
+vmap > >gv
+vmap < <gv
+
+" differences if in window in diff mode
+nnoremap <expr> <silent> <F3> (&diff ? "]c" : ":cnext\<CR>")
+nnoremap <expr> <silent> <F2> (&diff ? "[c" : ":cprev\<CR>")
+
 " Omnicomplete
 inoremap <Nul> <C-x><C-o>
 

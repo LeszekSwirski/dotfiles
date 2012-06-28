@@ -55,11 +55,11 @@ noremap <silent> <F8> :TlistToggle<CR>
 inoremap <silent> <F8> <C-O>:TlistToggle<CR>
 
 " Easy save & make
-nmap M :<C-U>exec ':wa\|make -j'. v:count1<CR>
+nmap <silent> M :<C-U>exec ':wa\|make -j'. v:count1<CR>
 
 " Restore visual selection after indent
-vmap > >gv
-vmap < <gv
+vnoremap > >gv
+vnoremap < <gv
 
 " differences if in window in diff mode
 nnoremap <expr> <silent> <F3> (&diff ? "]c" : ":cnext\<CR>")

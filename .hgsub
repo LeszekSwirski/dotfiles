@@ -1,5 +1,5 @@
 files/.vim/vim-pathogen = [git]https://github.com/tpope/vim-pathogen.git
-files/.vim/bundle/clang_complete = [git]https://github.com/Rip-Rip/clang_complete.git
+files/.vim/bundle/clang_complete = [git]https://github.com/LeszekSwirski/clang_complete.git
 files/.vim/bundle/DirDiff.vim = [git]https://github.com/vim-scripts/DirDiff.vim.git
 files/.vim/bundle/vim-inccomplete = [git]https://github.com/xaizek/vim-inccomplete.git
 files/.vim/bundle/vim-afterimage = [git]https://github.com/tpope/vim-afterimage.git
@@ -10,4 +10,5 @@ files/.vim/bundle/vim-easytags = [git]https://github.com/xolox/vim-easytags.git
 files/.vim/bundle/ctrlp.vim = [git] https://github.com/kien/ctrlp.vim.git
 files/.vim/bundle/Cpp11-Syntax-Support = [git]https://github.com/proyvind/Cpp11-Syntax-Support.git
 files/.vim/bundle/vim-shell = [git] https://github.com/xolox/vim-shell.git
-files/.vim/bundle/delimMate = [git] https://github.com/Raimondi/delimitMate.git
+files/.vim/bundle/delimitMate = [git] https://github.com/Raimondi/delimitMate.git
+files/.vim/bundle/SudoEdit.vim = [git] https://github.com/chrisbra/SudoEdit.vim.git

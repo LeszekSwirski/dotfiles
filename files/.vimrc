@@ -84,6 +84,7 @@ if executable('clang')
     let g:clang_complete_auto=1
     let g:clang_complete_copen=1
     let g:clang_periodic_quickfix=0
+    nnoremap <leader>q :call g:ClangUpdateQuickFix()<CR>
 else
     let g:clang_use_library=0
     let g:clang_complete_auto=0

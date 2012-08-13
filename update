@@ -34,7 +34,7 @@ def main():
                         shutil.rmtree(path)
                     subprocess.call(["git", "clone", url], cwd=parent)
                 else:
-                    subprocess.call(["git", "checkout", "master"], cwd=path)
+                    #subprocess.call(["git", "checkout", "master"], cwd=path)
                     subprocess.call(["git", "pull"], cwd=path)
 
             elif vcs == "svn":

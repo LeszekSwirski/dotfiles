@@ -1,11 +1,14 @@
-" Load plugins
 runtime vim-pathogen/autoload/pathogen.vim
+
+" Load plugins with pathogen
 call pathogen#infect()
 Helptags
-syntax on
 
+syntax on
+filetype plugin indent on
 
 set nocompatible
+set encoding=utf-8
 
 set mouse=a
 set number
@@ -39,6 +42,11 @@ set spelllang=en_gb
 
 set completeopt=menu,preview,longest
 
+let mapleader=","
+let maplocalleader=","
+
+colorscheme lucius
+
 " Change directory to current file's
 " autocmd! BufEnter * lcd %:p:h
 
@@ -69,7 +77,7 @@ nnoremap <expr> <silent> <F2> (&diff ? "[c" : ":cprev\<CR>")
 inoremap <Nul> <C-x><C-o>
 
 set tags+=tags;/
-set tagrelative
+set tagrelative 
 
 set makeprg=rmake
 
@@ -78,7 +86,7 @@ let g:GetLatestVimScripts_allowautoinstall=1
 
 
 
-" Clang completion
+" Clang completion 
 if executable('clang')
     let g:clang_use_library=1
     let g:clang_complete_auto=1
@@ -133,11 +141,14 @@ let g:easytags_dynamic_files=1
 let g:easytags_python_enabled=1
 let g:easytags_on_cursorhold = 0
 
-noremap <silent> <F12> :UpdateTags<CR>:HighlightTags<CR>
-inoremap <silent> <F12> <C-O>:UpdateTags<CR>:HighlightTags<CR>
+noremap <silent> <F12> :UpdateTags<CR>
+inoremap <silent> <F12> <C-O>:UpdateTags<CR>
 
 " Ctrl-P
 let g:ctrlp_map = '<c-f>'
+
+" Powerline
+let g:Powerline_symbols="compatible"
 
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"

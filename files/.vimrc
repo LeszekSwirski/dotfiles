@@ -51,8 +51,8 @@ command! Wq wq
 command! W w
 command! Q q
 
-noremap <silent> <F8> :TlistToggle<CR>
-inoremap <silent> <F8> <C-O>:TlistToggle<CR>
+noremap <silent> <F8> :TagbarToggle<CR>
+inoremap <silent> <F8> <C-O>:TagbarToggle<CR>
 
 " Easy save & make
 nmap <silent> M :<C-U>exec ':wa\|make -j'. v:count1<CR>
@@ -133,8 +133,8 @@ let g:easytags_dynamic_files=1
 let g:easytags_python_enabled=1
 let g:easytags_on_cursorhold = 0
 
-noremap <silent> <F12> :UpdateTags<CR>:HighlightTags<CR>
-inoremap <silent> <F12> <C-O>:UpdateTags<CR>:HighlightTags<CR>
+noremap <silent> <F12> :UpdateTags<CR>
+inoremap <silent> <F12> <C-O>:UpdateTags<CR>
 
 " Ctrl-P
 let g:ctrlp_map = '<c-f>'

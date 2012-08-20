@@ -3,11 +3,11 @@ ca0ce8fcc49a09eca7eb8ff8003554de2f250901 files/.vim/bundle/DirDiff.vim
 6bf494400ce6b6b53724f4fd0a81eb70c3d06fa9 files/.vim/bundle/SudoEdit.vim
 742694bbbe4a72a8b8a22e46ba61062f3c53e421 files/.vim/bundle/clang_complete
 6ddbfe2cc00a7eeb2a4450552b78276488a2e2c9 files/.vim/bundle/ctrlp.vim
-0326b7c14a8acb7e4185df1f6033d87bab9ff152 files/.vim/bundle/delimitMate
 8c570a493d260890242cbdc5a22d8500dc4604cb files/.vim/bundle/gundo.vim
 d92c8b01248d612444829001b3e081629d37a1aa files/.vim/bundle/minibufexpl.vim
-5ee12b5d725908aee5434c8466cdef481bb5e3e9 files/.vim/bundle/paredit
+8f2b65aef2354f42015cbbf354511bd0f5f234eb files/.vim/bundle/paredit
 ee35ab6954a11337a2b52003d07fabe442843b68 files/.vim/bundle/supertab
+f6acd740d797038e18cb95582a67ed78a2b387a7 files/.vim/bundle/tagbar
 f8829a5f3e5a2a9c5e8a17f322aa9296a0cdb622 files/.vim/bundle/vim-abolish
 6d5527d2fe337324c4b125a2d3b45e20df16f94d files/.vim/bundle/vim-afterimage
 667a668e114e9ec0e5d4cbcb0962d835b23614c4 files/.vim/bundle/vim-easymotion

@@ -45,8 +45,6 @@ set completeopt=menu,preview,longest
 let mapleader=","
 let maplocalleader=","
 
-colorscheme lucius
-
 " Change directory to current file's
 " autocmd! BufEnter * lcd %:p:h
 
@@ -128,12 +126,14 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplCheckDupeBufs = 0
 
-nnoremap <silent> <c-n> :MBEbn<cr>
-vnoremap <silent> <c-n> :MBEbn<cr>
-inoremap <silent> <c-n> <c-o>:MBEbn<cr>
-nnoremap <silent> <c-p> :MBEbp<cr>
-vnoremap <silent> <c-p> :MBEbp<cr>
-inoremap <silent> <c-p> <c-o>:MBEbp<cr>
+"nnoremap <silent> <c-n> :MBEbn<cr>
+"vnoremap <silent> <c-n> :MBEbn<cr>
+"inoremap <silent> <c-n> <c-o>:MBEbn<cr>
+"nnoremap <silent> <c-p> :MBEbp<cr>
+"vnoremap <silent> <c-p> :MBEbp<cr>
+"inoremap <silent> <c-p> <c-o>:MBEbp<cr>
+nnoremap <silent> <leader>n :MBEbn<CR>
+nnoremap <silent> <leader>p :MBEbp<CR>
 
 " Easytags
 let g:easytags_dynamic_files=1
@@ -149,6 +149,9 @@ let g:ctrlp_map = '<c-f>'
 
 " Powerline
 let g:Powerline_symbols="compatible"
+
+" Gundo
+nnoremap U :GundoToggle<CR> 
 
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"

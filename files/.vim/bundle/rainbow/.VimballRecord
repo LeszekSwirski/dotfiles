@@ -1,1 +1,0 @@
-Rainbow.vba: call delete('/home/leszek/.vim/bundle/rainbow/plugin/RainbowPlugin.vim')|call delete('/home/leszek/.vim/bundle/rainbow/autoload/Rainbow.vim')|call delete('/home/leszek/.vim/bundle/rainbow/after/syntax/c/rainbow.vvim')|call delete('/home/leszek/.vim/bundle/rainbow/doc/Rainbow.txt')

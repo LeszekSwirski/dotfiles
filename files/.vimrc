@@ -1,11 +1,4 @@
-runtime vim-pathogen/autoload/pathogen.vim
-
-" Load plugins with pathogen
-call pathogen#infect()
-Helptags
-
-syntax on
-filetype plugin indent on
+runtime bundles.vim
 
 set nocompatible
 set encoding=utf-8
@@ -104,9 +97,6 @@ set path+=/usr/local/include
 let g:yankring_replace_n_pkey = '<M-n>'
 let g:yankring_replace_n_nkey = '<M-p>'
 nnoremap <silent> <F11> :YRShow<CR>
-
-" Taglist
-let Tlist_Exit_OnlyWindow = 1
 
 " Moving lines up and down
 nmap <M-j> mz:m+<CR>`z==

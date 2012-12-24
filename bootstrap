@@ -1,0 +1,3 @@
+#!/bin/sh
+
+vim -u files/.vim/bundles.vim +BundleInstall! +q

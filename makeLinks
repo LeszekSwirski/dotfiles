@@ -25,7 +25,6 @@ else
 	LINKDIR=$(readlink -e $1)
 fi
 
-dolink "${DOTFILES}/files/.vim/autoload" "${DOTFILES}/files/.vim/vim-pathogen/autoload"
 for i in $(ls -A $DOTFILES/files) ; do
     TARGET=${DOTFILES}/files/$i
     LINK=${LINKDIR}/$i

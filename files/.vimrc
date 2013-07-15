@@ -160,6 +160,7 @@ nnoremap <silent> <leader>n :MBEbn<CR>
 nnoremap <silent> <leader>p :MBEbp<CR>
 
 " Easytags
+let g:easytags_suppress_ctags_warning=1
 let g:easytags_dynamic_files=1
 "let g:easytags_autorecurse=1
 let g:easytags_python_enabled=1

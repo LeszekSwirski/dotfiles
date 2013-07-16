@@ -1,6 +1,6 @@
 [ui]
 style = ~/.hgrc.d/map-cmdline.colourlog
-username = Leszek Swirski <ls426@cam.ac.uk>
+username = Leszek Swirski <leszek@swirski.co.uk>
 
 [trusted]
 users = jc593 jw682

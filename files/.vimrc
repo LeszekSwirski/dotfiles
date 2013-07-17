@@ -150,14 +150,8 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplCheckDupeBufs = 0
 
-"nnoremap <silent> <c-n> :MBEbn<cr>
-"vnoremap <silent> <c-n> :MBEbn<cr>
-"inoremap <silent> <c-n> <c-o>:MBEbn<cr>
-"nnoremap <silent> <c-p> :MBEbp<cr>
-"vnoremap <silent> <c-p> :MBEbp<cr>
-"inoremap <silent> <c-p> <c-o>:MBEbp<cr>
-nnoremap <silent> <leader>n :MBEbn<CR>
-nnoremap <silent> <leader>p :MBEbp<CR>
+nnoremap [m :MBEbp<CR>
+nnoremap ]m :MBEbn<CR>
 
 " Easytags
 let g:easytags_suppress_ctags_warning=1
@@ -170,7 +164,7 @@ noremap <silent> <F12> :UpdateTags<CR>
 inoremap <silent> <F12> <C-O>:UpdateTags<CR>
 
 " Ctrl-P
-let g:ctrlp_map = '<c-f>'
+let g:ctrlp_map = '<c-p>'
 
 " Powerline
 let g:Powerline_symbols="compatible"

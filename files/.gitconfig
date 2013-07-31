@@ -1,0 +1,13 @@
+[user]
+    name = Leszek Swirski
+    email = leszek@swirski.co.uk
+
+[alias]
+    ci = commit
+    co = checkout
+    st = status -s
+    hardreset = reset --hard HEAD
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(yellow)%h%C(reset) - %C(cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''  %C(white)%s%C(reset) %C(bold black)- %an%C(reset)' --all
+
+[color]
+	ui = true

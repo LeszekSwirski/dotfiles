@@ -1,1 +1,1 @@
-files/.vim/bundle/vundle = [git]https://github.com/gmarik/vundle.git
+files/.vim/bundle/neobundle.vim = [git]https://github.com/Shougo/neobundle.vim.git

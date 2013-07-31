@@ -1,60 +1,68 @@
 set nocompatible               " be iMproved
-filetype off                   " required!
+filetype off 
 
 if has('win32') || has('win64')
-  set rtp+=~/vimfiles/bundle/vundle/
-  call vundle#rc('$HOME/vimfiles/bundle/')
+  set rtp+=~/vimfiles/bundle/neobundle.vim/
+  call neobundle#rc(expand('$HOME/vimfiles/bundle/'))
 else
   " Usual quickstart instructions
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  set rtp+=~/.vim/bundle/neobundle.vim/
+  call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 "
-" let Vundle manage Vundle
+" let NeoBundle manage NeoBundle
 " required! 
-Bundle 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle'
 
 " My Bundles here:
 "
 " original repos on github
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'chrisbra/SudoEdit.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'mileszs/ack.vim'
-Bundle 'vim-jp/cpp-vim'
-Bundle 'rking/ag.vim'
-Bundle 'sjl/gundo.vim'
-Bundle 'techlivezheng/vim-plugin-minibufexpl'
-Bundle 'terryma/vim-expand-region'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-afterimage'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'tpope/vim-repeat'
-Bundle 'vim-scripts/DirDiff.vim'
-Bundle 'xolox/vim-easytags'
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-shell'
-Bundle 'scrooloose/syntastic' 
-Bundle 'maxbrunsfeld/vim-yankstack' 
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'Shougo/vimproc.vim'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/unite-outline'
-Bundle 'klen/python-mode'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'jonathanfilip/vim-lucius'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'chrisbra/SudoEdit.vim', { 'vim_version' : 'Vim 7.0.111' }
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'majutsushi/tagbar', { 'vim_version' : 'Vim 7.0.167' }
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'vim-jp/cpp-vim'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'techlivezheng/vim-plugin-minibufexpl'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-afterimage'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'vim-scripts/DirDiff.vim'
+NeoBundle 'xolox/vim-easytags'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-shell'
+NeoBundle 'scrooloose/syntastic' 
+NeoBundle 'maxbrunsfeld/vim-yankstack' 
+NeoBundle 'Valloric/YouCompleteMe', { 'vim_version' : 'Vim 7.3.584' }
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'echo Cannot auto-update vimproc on windows',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'klen/python-mode'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'jonathanfilip/vim-lucius'
 
 " vim-scripts repos
-Bundle 'a.vim'
-Bundle 'renamer.vim'
+NeoBundle 'a.vim'
+NeoBundle 'renamer.vim'
 
 " non github repos
-Bundle 'git@bitbucket.org:Leszek/cauv-messages.git'
-
-BundleDocs
+NeoBundle 'git@bitbucket.org:Leszek/cauv-messages.git'
 
 syntax on
 filetype plugin indent on
+
+NeoBundleCheck

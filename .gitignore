@@ -1,4 +1,4 @@
-[glob]
 .netrwhist
 files/.vim/autoload
 files/.vim/bundle
+*.swp

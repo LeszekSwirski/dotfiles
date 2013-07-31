@@ -19,9 +19,9 @@ NeoBundleFetch 'Shougo/neobundle'
 " original repos on github
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'Lokaltog/vim-powerline'
-NeoBundle 'chrisbra/SudoEdit.vim', { 'vim_version' : 'Vim 7.0.111' }
+NeoBundle 'chrisbra/SudoEdit.vim', { 'vim_version' : '7.0.111' }
 NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'majutsushi/tagbar', { 'vim_version' : 'Vim 7.0.167' }
+NeoBundle 'majutsushi/tagbar', { 'vim_version' : '7.0.167' }
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'vim-jp/cpp-vim'
 NeoBundle 'rking/ag.vim'
@@ -40,7 +40,7 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-shell'
 NeoBundle 'scrooloose/syntastic' 
 NeoBundle 'maxbrunsfeld/vim-yankstack' 
-NeoBundle 'Valloric/YouCompleteMe', { 'vim_version' : 'Vim 7.3.584' }
+NeoBundle 'Valloric/YouCompleteMe', { 'vim_version' : '7.3.584' }
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
       \     'windows' : 'echo Cannot auto-update vimproc on windows',

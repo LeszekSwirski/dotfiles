@@ -54,6 +54,8 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'klen/python-mode'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle "funorpain/vim-smali"
 
 " vim-scripts repos
 NeoBundle 'a.vim'

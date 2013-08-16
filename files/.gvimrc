@@ -1,7 +1,3 @@
-let s:cpo_save=&cpo
-set cpo&vim
-let &cpo=s:cpo_save
-
 if has("gui_gtk")
     set guifont=Monospace\ 8
 

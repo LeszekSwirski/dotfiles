@@ -166,8 +166,12 @@ inoremap <silent> <F12> <C-O>:UpdateTags<CR>
 " Ctrl-P
 let g:ctrlp_map = '<c-p>'
 
-" Powerline
-let g:Powerline_symbols="compatible"
+" Airline
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_linecolumn_prefix = ''
+let g:airline_theme='tomorrow'
+let g:airline_section_z="%P %l:%c"
 
 " Gundo
 nnoremap U :GundoToggle<CR> 

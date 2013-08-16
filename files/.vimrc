@@ -176,6 +176,9 @@ let g:airline_section_z="%P %l:%c"
 " Gundo
 nnoremap U :GundoToggle<CR> 
 
+" Yankstack
+call yankstack#setup()
+
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"
 	exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"

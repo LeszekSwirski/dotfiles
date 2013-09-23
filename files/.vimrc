@@ -194,6 +194,14 @@ if has('win32')
     set directory=.,$TEMP
 endif
 
+augroup myvimrc
+    autocmd!
+    autocmd BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc nested
+                \ source $MYVIMRC |
+                \ if has('gui_running') | source $MYGVIMRC | endif
+augroup END
+
+
 "if $TERM=='gnome-256color'
 "	set t_Co=256
 "	set t_Sf=^[[3%dm

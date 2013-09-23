@@ -12,7 +12,7 @@ endif
 "
 " let NeoBundle manage NeoBundle
 " required! 
-NeoBundleFetch 'Shougo/neobundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
 "
@@ -56,10 +56,18 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle "funorpain/vim-smali"
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'PeterRincker/vim-argumentative'
+NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
+NeoBundle 'jelera/vim-javascript-syntax'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'marijnh/tern_for_vim'
 
 " vim-scripts repos
 NeoBundle 'a.vim'
 NeoBundle 'renamer.vim'
+NeoBundle 'paredit.vim'
 
 " non github repos
 NeoBundle 'git@bitbucket.org:Leszek/cauv-messages.git'

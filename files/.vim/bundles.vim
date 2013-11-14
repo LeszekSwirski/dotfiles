@@ -1,6 +1,8 @@
 set nocompatible               " be iMproved
 filetype off 
 
+let g:bundles_vim_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+
 if has('win32') || has('win64')
   set rtp+=~/vimfiles/bundle/neobundle.vim/
   call neobundle#rc(expand('$HOME/vimfiles/bundle/'))
@@ -40,10 +42,16 @@ NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-shell'
 NeoBundle 'scrooloose/syntastic' 
 NeoBundle 'maxbrunsfeld/vim-yankstack' 
-NeoBundle 'Valloric/YouCompleteMe', { 'vim_version' : '7.3.584' }
+NeoBundle 'Valloric/YouCompleteMe', {
+      \ 'vim_version' : '7.3.584',
+      \ 'build' : {
+      \     'windows' : 'start /wait "Building YCM" "' . substitute(g:bundles_vim_dir,'\\','/','g') . '/scripts/install-ycm.bat"',
+      \     'unix' : './install.sh --clang-completer --system-libclang',
+      \    },
+      \ }
 NeoBundle 'Shougo/vimproc.vim', {
       \ 'build' : {
-      \     'windows' : 'echo Cannot auto-update vimproc on windows',
+      \     'windows' : 'start /wait "Building vimproc" "' . substitute(g:bundles_vim_dir,'\\','/','g') . '/scripts/using-vs.bat" "nmake /nologo /f make_msvc.mak nodebug=1"',
       \     'cygwin' : 'make -f make_cygwin.mak',
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',

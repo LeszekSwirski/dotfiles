@@ -179,6 +179,11 @@ nnoremap U :GundoToggle<CR>
 " Yankstack
 call yankstack#setup()
 
+" LatexBox
+let g:LatexBox_latexmk_async = 1
+let g:LatexBox_latexmk_preview_continuously = 1
+let g:LatexBox_quickfix = 2
+
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"
 	exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"

@@ -62,7 +62,6 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'klen/python-mode'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'airblade/vim-gitgutter'
 NeoBundle "funorpain/vim-smali"
 NeoBundle 'kien/rainbow_parentheses.vim'
 NeoBundle 'PeterRincker/vim-argumentative'
@@ -71,6 +70,9 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'marijnh/tern_for_vim'
+if !has('win32')
+    NeoBundle 'airblade/vim-gitgutter'
+endif
 
 " vim-scripts repos
 NeoBundle 'a.vim'

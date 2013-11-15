@@ -91,13 +91,10 @@ set path+=/usr/local/include
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion = 1
+if has('win32')
+    let g:ycm_path_to_python_interpreter = 'C:\Python27\pythonw.exe'
+endif
 nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-let g:ycm_filetype_blacklist = {
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'text' : 1,
-      \ 'unite' : 1,
-      \}
 
 " Unite.vim
 let g:unite_source_history_yank_enable = 1

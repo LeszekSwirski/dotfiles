@@ -70,6 +70,7 @@ NeoBundle 'jelera/vim-javascript-syntax'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'marijnh/tern_for_vim'
+NeoBundle 'dag/vim-fish'
 if !has('win32')
     NeoBundle 'airblade/vim-gitgutter'
 endif

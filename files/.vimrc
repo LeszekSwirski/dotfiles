@@ -35,6 +35,10 @@ set spelllang=en_gb
 
 set completeopt=menu,preview,longest
 
+if &shell =~ '\<fish$'
+    set shell=/bin/bash
+endif
+
 let mapleader=","
 let maplocalleader=","
 

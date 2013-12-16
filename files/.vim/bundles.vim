@@ -3,15 +3,20 @@ filetype off
 
 let g:bundles_vim_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
-if has('win32') || has('win64')
-  set rtp+=~/vimfiles/bundle/neobundle.vim/
-  call neobundle#rc(expand('$HOME/vimfiles/bundle/'))
-else
-  " Usual quickstart instructions
-  set rtp+=~/.vim/bundle/neobundle.vim/
-  call neobundle#rc(expand('~/.vim/bundle/'))
+if has('vim_starting')
+    let neobundle_dir = g:bundles_vim_dir.'/bundle/neobundle.vim/'
+    " Append neobundle dir to rtp
+    let &rtp = join(add(split(&rtp,','), neobundle_dir),',')
+
+    " Bootstrap neobundle if necessary
+    if !isdirectory(neobundle_dir) || !isdirectory(neobundle_dir.'.git')
+        call mkdir(neobundle_dir, 'p')
+        call system('git clone "https://github.com/Shougo/neobundle.vim.git" ' . shellescape(neobundle_dir))
+    endif
+
+    call neobundle#rc(g:bundles_vim_dir.'/bundle/')
 endif
-"
+
 " let NeoBundle manage NeoBundle
 " required! 
 NeoBundleFetch 'Shougo/neobundle.vim'

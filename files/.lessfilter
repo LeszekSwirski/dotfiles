@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Use Pygments to get syntax colorization in less
+# export LESS=" -R"
+# export LESSOPEN='|~/code/dotfiles/lessfilter %s'
+
+if which "pygmentize" >/dev/null 2>&1 ; then
+    is_256_term=
+    case "$COLORTERM" in
+        gnome-terminal) is_256_term=yes ;;
+    esac
+    case "$TERM" in
+        *256*) is_256_term=yes ;;
+    esac
+
+    if [ -n "$is_256_term" ] ; then
+        pygmentize -g -f terminal256 -O style=native "$1"
+    else
+        pygmentize -g -f terminal -O bg=dark "$1"
+    fi
+    exit 0
+else
+    exit 1
+fi

@@ -10,7 +10,7 @@ if has('vim_starting')
 
     " Bootstrap neobundle if necessary
     if !isdirectory(neobundle_dir) || !isdirectory(neobundle_dir.'.git')
-        call system('git clone "https://github.com/Shougo/neobundle.vim.git" ' . shellescape(neobundle_dir))
+        exec '!git clone "https://github.com/Shougo/neobundle.vim.git" ' . shellescape(neobundle_dir)
     endif
 
     call neobundle#rc(g:bundles_vim_dir.'/bundle/')

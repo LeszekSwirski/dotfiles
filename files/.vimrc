@@ -38,6 +38,9 @@ set spelllang=en_gb
 
 set completeopt=menu,preview,longest
 
+set undofile
+set undodir=$HOME/.vimundo/
+
 if &shell =~ '\<fish$'
     set shell=/bin/bash
 endif

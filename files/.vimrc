@@ -80,8 +80,6 @@ nnoremap <expr> <silent> <F2> (&diff ? "[c" : ":cprev\<CR>")
 set tags+=tags;/
 set tagrelative 
 
-set makeprg=rmake
-
 " Moving lines up and down
 nmap <M-j> mz:m+<CR>`z==
 nmap <M-k> mz:m-2<CR>`z==
@@ -148,6 +146,7 @@ endfunction
 
 " Syntastic
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_always_populate_loc_list = 1
 
 " Python-mode
 let g:pymode_lint = 0
@@ -163,8 +162,8 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplUseSingleClick = 1
 let g:miniBufExplCheckDupeBufs = 0
 
-nnoremap [m :MBEbp<CR>
-nnoremap ]m :MBEbn<CR>
+nnoremap <silent> [m :MBEbp<CR>
+nnoremap <silent> ]m :MBEbn<CR>
 
 " Easytags
 let g:easytags_suppress_ctags_warning=1
@@ -187,7 +186,11 @@ let g:airline_section_z="%P %l:%c"
 nnoremap U :GundoToggle<CR> 
 
 " Yankstack
+let g:yankstack_map_keys = 0
 call yankstack#setup()
+nmap <C-P> <Plug>yankstack_substitute_older_paste
+nmap ,p <Plug>yankstack_substitute_older_paste
+nmap ,P <Plug>yankstack_substitute_newer_paste
 
 " LatexBox
 let g:LatexBox_latexmk_async = 1

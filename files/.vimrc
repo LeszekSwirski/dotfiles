@@ -117,7 +117,7 @@ nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file<cr>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>o :<C-u>Unite -buffer-name=outline -start-insert outline<cr>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
-nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
+nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  -start-insert buffer<cr>
 nnoremap <leader>g :<C-u>Unite -buffer-name=grep  grep:.<cr>
 
 let g:unite_source_grep_max_candidates = 200
@@ -142,6 +142,14 @@ function! s:unite_my_settings()
     imap <buffer> '     <Plug>(unite_quick_match_default_action)
     nmap <buffer> '     <Plug>(unite_quick_match_default_action)
     nmap <buffer> <esc> <Plug>(unite_exit)
+    nmap <buffer> q     <Plug>(unite_exit)
+    if has('unix') && !has('gui_running')
+        setlocal ttimeoutlen=0
+        nmap <buffer> <esc>OA <Up>
+        nmap <buffer> <esc>OB <Down>
+        nmap <buffer> <esc>OC <Left>
+        nmap <buffer> <esc>OD <Right>
+    endif
 endfunction
 
 " Syntastic

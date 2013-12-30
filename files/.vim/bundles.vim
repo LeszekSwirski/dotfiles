@@ -74,6 +74,8 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'dag/vim-fish'
+NeoBundle 'dockyard/vim-easydir'
+NeoBundle 'tejr/vim-tmux'
 if !has('win32')
     NeoBundle 'airblade/vim-gitgutter'
 endif

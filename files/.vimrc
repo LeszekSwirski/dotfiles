@@ -16,7 +16,10 @@ set autoindent
 set smartindent
 set showmatch
 set incsearch
-set wildmode=longest,list
+
+set wildmode=longest:full,list:full
+set wildignorecase
+set wildmenu
 
 set ignorecase
 set smartcase

@@ -26,7 +26,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/SudoEdit.vim', { 'vim_version' : '7.0.111' }
-NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar', { 'vim_version' : '7.0.167' }
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'vim-jp/cpp-vim'

@@ -176,9 +176,6 @@ let g:easytags_on_cursorhold = 0
 noremap <silent> <F12> :UpdateTags<CR>
 inoremap <silent> <F12> <C-O>:UpdateTags<CR>
 
-" Ctrl-P
-let g:ctrlp_map = '<c-p>'
-
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''

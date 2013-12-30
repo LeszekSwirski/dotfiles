@@ -1,5 +1,5 @@
 set nocompatible               " be iMproved
-filetype off 
+filetype off
 
 let g:bundles_vim_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 
@@ -18,7 +18,7 @@ if has('vim_starting')
 endif
 
 " let NeoBundle manage NeoBundle
-" required! 
+" required!
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " My Bundles here:
@@ -45,8 +45,8 @@ NeoBundle 'vim-scripts/DirDiff.vim'
 NeoBundle 'xolox/vim-easytags'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-shell'
-NeoBundle 'scrooloose/syntastic' 
-NeoBundle 'maxbrunsfeld/vim-yankstack' 
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'maxbrunsfeld/vim-yankstack'
 NeoBundle 'Valloric/YouCompleteMe', {
       \ 'vim_version' : '7.3.584',
       \ 'build' : {

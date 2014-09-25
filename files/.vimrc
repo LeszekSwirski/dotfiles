@@ -96,6 +96,35 @@ let g:GetLatestVimScripts_allowautoinstall=1
 
 set path+=/usr/local/include
 
+" Yankstack
+" Should be first so that other plugins can map yanking keys
+let g:yankstack_map_keys = 0
+call yankstack#setup()
+nmap <C-P> <Plug>yankstack_substitute_older_paste
+nmap ,p <Plug>yankstack_substitute_older_paste
+nmap ,P <Plug>yankstack_substitute_newer_paste
+
+" Sneak
+let g:sneak#streak = 1
+"replace 'f' with inclusive 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+"replace 't' with exclusive 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
+" explicitly map 's' because yankstack overwrites it
+nmap s <Plug>SneakForward
+nmap S <Plug>SneakBackward
+xmap s <Plug>VSneakForward
+xmap Z <Plug>VSneakBackward
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -192,13 +221,6 @@ let g:airline_section_z="%P %l:%c"
 
 " Gundo
 nnoremap U :GundoToggle<CR> 
-
-" Yankstack
-let g:yankstack_map_keys = 0
-call yankstack#setup()
-nmap <C-P> <Plug>yankstack_substitute_older_paste
-nmap ,p <Plug>yankstack_substitute_older_paste
-nmap ,P <Plug>yankstack_substitute_newer_paste
 
 " LatexBox
 let g:LatexBox_latexmk_async = 1

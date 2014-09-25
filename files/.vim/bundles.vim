@@ -23,7 +23,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " My Bundles here:
 "
 " original repos on github
-NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'chrisbra/SudoEdit.vim', { 'vim_version' : '7.0.111' }
 NeoBundle 'majutsushi/tagbar', { 'vim_version' : '7.0.167' }

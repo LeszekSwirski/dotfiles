@@ -239,10 +239,6 @@ if $TERM=='screen' || $TERM=='xterm' || $TERM=='gnome-256color' || $TERM=='xterm
 endif
 colorscheme jellybeans
 
-if has('win32')
-    set directory=.,$TEMP
-endif
-
 augroup myvimrc
     autocmd!
     autocmd BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc nested

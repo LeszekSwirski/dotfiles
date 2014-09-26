@@ -226,6 +226,7 @@ nnoremap U :GundoToggle<CR>
 let g:LatexBox_latexmk_async = 1
 let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 2
+let g:LatexBox_latexmk_options = ' -shell-escape -synctex=1 '
 
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"

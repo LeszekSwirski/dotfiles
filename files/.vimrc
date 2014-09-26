@@ -256,3 +256,12 @@ augroup END
 "	set t_Sf=^[[3%dm
 "	set t_Sb=^[[4%dm
 "endif
+
+if filereadable($MYVIMRC . '.local')
+    source $MYVIMRC.local
+    augroup myvimrc
+        autocmd BufWritePost .vimrc.local,_vimrc.local,vimrc.local,.gvimrc.local,_gvimr.localc,gvimrc.local nested
+                    \ source $MYVIMRC |
+                    \ if has('gui_running') | source $MYGVIMRC | endif
+    augroup END
+endif

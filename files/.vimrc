@@ -228,6 +228,9 @@ let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 2
 let g:LatexBox_latexmk_options = ' -shell-escape -synctex=1 '
 
+" Multiple cursors
+" cnoremap <C-N>  <CR>gn:<C-U>call multiple_cursors#find(line("'<"),line("'>"),@/)<CR>
+
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"
 	exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"

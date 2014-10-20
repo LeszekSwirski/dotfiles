@@ -75,6 +75,7 @@ NeoBundle 'marijnh/tern_for_vim'
 NeoBundle 'dag/vim-fish'
 NeoBundle 'dockyard/vim-easydir'
 NeoBundle 'tejr/vim-tmux'
+NeoBundle 'terryma/vim-multiple-cursors'
 if !has('win32')
     NeoBundle 'airblade/vim-gitgutter'
 endif

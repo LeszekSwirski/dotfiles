@@ -79,6 +79,10 @@ NeoBundle 'terryma/vim-multiple-cursors'
 if !has('win32')
     NeoBundle 'airblade/vim-gitgutter'
 endif
+NeoBundle 'haya14busa/incsearch.vim'
+if executable('tmux')
+    NeoBundle 'christoomey/vim-tmux-navigator'
+endif
 
 " vim-scripts repos
 NeoBundle 'a.vim'

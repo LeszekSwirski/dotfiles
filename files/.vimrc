@@ -64,7 +64,15 @@ noremap <silent> <F8> :TagbarToggle<CR>
 inoremap <silent> <F8> <C-O>:TagbarToggle<CR>
 
 " Easy save & make
-nmap <silent> M :<C-U>exec ':wa\|make -j'. v:count1<CR>
+function! SaveAndMake(count)
+    wa
+    if empty(a:count)
+        make
+    else
+        exec 'make -j'. a:count1
+    end
+endfunction
+nmap <silent> M :<C-U>call SaveAndMake(v:count)<CR>
 
 " Restore visual selection after indent
 vnoremap > >gv
@@ -230,6 +238,23 @@ let g:LatexBox_latexmk_options = ' -shell-escape -synctex=1 '
 
 " Multiple cursors
 " cnoremap <C-N>  <CR>gn:<C-U>call multiple_cursors#find(line("'<"),line("'>"),@/)<CR>
+
+" Incsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+let g:incsearch#consistent_n_direction = 1
+
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+
 
 if $TERM=='screen'
 	exe "set title titlestring=vim:%f"

@@ -83,6 +83,7 @@ NeoBundle 'haya14busa/incsearch.vim'
 if executable('tmux')
     NeoBundle 'christoomey/vim-tmux-navigator'
 endif
+NeoBundle 'chrisbra/Recover.vim'
 
 " vim-scripts repos
 NeoBundle 'a.vim'

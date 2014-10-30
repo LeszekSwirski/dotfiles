@@ -12,9 +12,9 @@ if has('vim_starting')
     if !isdirectory(neobundle_dir) || !isdirectory(neobundle_dir.'.git')
         exec '!git clone "https://github.com/Shougo/neobundle.vim.git" ' . shellescape(neobundle_dir)
     endif
-
-    call neobundle#rc(g:bundles_vim_dir.'/bundle/')
 endif
+
+call neobundle#begin(g:bundles_vim_dir.'/bundle/')
 
 " let NeoBundle manage NeoBundle
 " required!
@@ -92,6 +92,8 @@ NeoBundle 'paredit.vim'
 
 " non github repos
 NeoBundle 'git@bitbucket.org:Leszek/cauv-messages.git'
+
+call neobundle#end()
 
 syntax on
 filetype plugin indent on

@@ -1,36 +1,34 @@
 @echo off
+setlocal
+
+set ERRORCODE=0
+
+set MACHINE=%~1
+set CMD=%~2
 
 if exist "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" (
     if exist "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.Cmd" (
-        call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.Cmd" /Release /x86 /win7 1>NUL 2>NUL
-        call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" x86 1>NUL 2>NUL
+        call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.Cmd" /Release /%MACHINE% /win7 1>NUL 2>NUL
+        call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %MACHINE% 1>NUL 2>NUL
         goto :compilerok
     )
 )
 if exist "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" (
     if exist "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.Cmd" (
-        call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.Cmd" /Release /x86 /win7 1>NUL 2>NUL
-        call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" x86 1>NUL 2>NUL
+        call "C:\Program Files\Microsoft SDKs\Windows\v7.1\Bin\SetEnv.Cmd" /Release /%MACHINE% /win7 1>NUL 2>NUL
+        call "C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\vcvarsall.bat" %MACHINE% 1>NUL 2>NUL
         goto :compilerok
     )
 )
-goto :fail
+set ERRORCODE=1
+goto :end
 
 :compilerok
 
-set CMD=%~1
 
 echo %CMD%
-%CMD% || goto :compilefail
+%CMD% || set ERRORCODE=2
 
-goto :eof
+:end
 
-:fail
-echo Couldn't find compiler
-exit 1
-goto :eof
-
-:compilefail
-echo Failed to compile
-exit 2
-goto :eof
+endlocal && exit /b %ERRORCODE%

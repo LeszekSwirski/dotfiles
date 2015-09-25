@@ -32,7 +32,7 @@ set history=2000
 
 set backspace=indent,eol,start
 
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 set spelllang=en_gb
 

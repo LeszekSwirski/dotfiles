@@ -216,9 +216,11 @@ inoremap <silent> <F12> <C-O>:UpdateTags<CR>
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-let g:airline_linecolumn_prefix = ''
 let g:airline_theme='tomorrow'
 let g:airline_section_z="%P %l:%c"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#show_tab_type = 1
 
 " Gundo
 nnoremap U :GundoToggle<CR> 

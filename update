@@ -2,62 +2,25 @@
 
 import sys
 import os
-import os.path
-import shutil
-import subprocess
-import re
+import urllib2
+
+ROOT_DIR = os.path.abspath(os.path.dirname(sys.argv[0]))
+
+
+def update_vim_plug():
+    directory = os.path.join(ROOT_DIR, 'files', '.vim', 'autoload')
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    with open(os.path.join(directory, 'plug.vim'), 'w') as f:
+      f.write(urllib2.urlopen(url).read())
+
 
 def main():
-    hgsub = open(os.path.join(os.path.dirname(sys.argv[0]), ".hgsub"))
-    hgsubline = re.compile("(\S+)\s*\=\s*(?:\[(git|hg|svn)\])?\s*(\S+)")
-    for l in hgsub:
-        m = hgsubline.match(l)
-        if m != None:
-            path = os.path.abspath(m.group(1))
-            vcs = m.group(2)
-            if vcs == None:
-                vcs = "hg"
-            url = m.group(3)
-            
-            print("%s = [%s] %s" % (path,vcs,url))
+    update_vim_plug()
 
-            parent = os.path.dirname(path)
 
-            if not os.path.exists(parent):
-                print("Creating directory: %s" % parent)
-                os.makedirs(parent)
-
-            if vcs == "git":
-                if not os.path.exists(os.path.join(path, ".git")):
-                    if os.path.exists(path):
-                        print("Deleting invalid subrepository folder: %s" % path)
-                        shutil.rmtree(path)
-                    subprocess.call(["git", "clone", url], cwd=parent)
-                else:
-                    subprocess.call(["git", "pull"], cwd=path)
-
-            elif vcs == "svn":
-                if not os.path.exists(os.path.join(path, ".svn")):
-                    if os.path.exists(path):
-                        print("Deleting invalid subrepository folder: %s" % path)
-                        shutil.rmtree(path)
-                    subprocess.call(["svn", "checkout", url], cwd=parent)
-                else:
-                    subprocess.call(["svn", "update"], cwd=path)
-
-            elif vcs == "hg":
-                if not os.path.exists(os.path.join(path, ".hg")):
-                    if os.path.exists(path):
-                        print("Deleting invalid subrepository folder: %s" % path)
-                        shutil.rmtree(path)
-                    subprocess.call(["hg", "clone", url], cwd=parent)
-                else:
-                    subprocess.call(["hg", "pull", "-u"], cwd=path)
-
-            else:
-                print("Unknown repository type: %s" % vcs)
-                pass
-
-    
 if __name__ == "__main__":
     main()
+
+# vim:set sw=4 ts=4 expandtab:

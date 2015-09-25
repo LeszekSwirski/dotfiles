@@ -1,4 +1,4 @@
 .netrwhist
-files/.vim/autoload
-files/.vim/bundle
 *.swp
+files/.vim/plugged
+files/.vim/cache

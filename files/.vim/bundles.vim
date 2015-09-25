@@ -1,101 +1,91 @@
-set nocompatible               " be iMproved
-filetype off
+call plug#begin('~/.vim/plugged')
 
-let g:bundles_vim_dir = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+" sensible defaults for vim
+Plug 'tpope/vim-sensible'
 
-if has('vim_starting')
-    let neobundle_dir = g:bundles_vim_dir.'/bundle/neobundle.vim/'
-    " Append neobundle dir to rtp
-    let &rtp = join(add(split(&rtp,','), neobundle_dir),',')
+" better navigation
+Plug 'justinmk/vim-sneak'
 
-    " Bootstrap neobundle if necessary
-    if !isdirectory(neobundle_dir) || !isdirectory(neobundle_dir.'.git')
-        exec '!git clone "https://github.com/Shougo/neobundle.vim.git" ' . shellescape(neobundle_dir)
+Plug 'bling/vim-airline'
+Plug 'chrisbra/SudoEdit.vim'
+Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
+Plug 'vim-jp/cpp-vim'
+Plug 'rking/ag.vim'
+Plug 'sjl/gundo.vim'
+Plug 'techlivezheng/vim-plugin-minibufexpl'
+Plug 'terryma/vim-expand-region'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-afterimage'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/DirDiff.vim'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-shell'
+Plug 'scrooloose/syntastic'
+Plug 'maxbrunsfeld/vim-yankstack'
+
+function! BuildYCM(info)
+    if has('unix')
+      !./install.sh --clang-completer
+    elseif has('win32')
+      exec '!start "Building YCM" "' . substitute(g:plug_home,'\\','/','g') . '/scripts/install-ycm.bat" ' . (has("win64") ? 'x64' : 'x86')'
     endif
-endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-call neobundle#begin(g:bundles_vim_dir.'/bundle/')
+function! BuildVimProc(info)
+    if has('win32unix')
+      !make -f make_cygwin.mak
+    elseif has('mac')
+      !make -f make_mac.mak
+    elseif has('unix')
+      !make -f make_unix.mak
+    elseif has('win32')
+      exec 'start "Building vimproc" "' . substitute(g:bundles_vim_dir,'\\','/','g') . '/scripts/using-vs.bat" ' . (has("win64") ? 'x64' : 'x86') . ' "nmake /nologo /f make_msvc.mak nodebug=1"',
+    endif
+endfunction
+Plug 'Shougo/vimproc.vim', { 'do': function('BuildVimProc') }
 
-" let NeoBundle manage NeoBundle
-" required!
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-" My Bundles here:
-"
-" original repos on github
-NeoBundle 'justinmk/vim-sneak'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'chrisbra/SudoEdit.vim', { 'vim_version' : '7.0.111' }
-NeoBundle 'majutsushi/tagbar', { 'vim_version' : '7.0.167' }
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'vim-jp/cpp-vim'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'techlivezheng/vim-plugin-minibufexpl'
-NeoBundle 'terryma/vim-expand-region'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-afterimage'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'vim-scripts/DirDiff.vim'
-NeoBundle 'xolox/vim-easytags'
-NeoBundle 'xolox/vim-misc'
-NeoBundle 'xolox/vim-shell'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'maxbrunsfeld/vim-yankstack'
-NeoBundle 'Valloric/YouCompleteMe', {
-      \ 'vim_version' : '7.3.584',
-      \ 'build' : {
-      \     'windows' : 'start "Building YCM" "' . substitute(g:bundles_vim_dir,'\\','/','g') . '/scripts/install-ycm.bat" ' . (has("win64") ? 'x64' : 'x86'),
-      \     'unix' : './install.sh --clang-completer --system-libclang',
-      \    },
-      \ }
-NeoBundle 'Shougo/vimproc.vim', {
-      \ 'build' : {
-      \     'windows' : 'start "Building vimproc" "' . substitute(g:bundles_vim_dir,'\\','/','g') . '/scripts/using-vs.bat" ' . (has("win64") ? 'x64' : 'x86') . ' "nmake /nologo /f make_msvc.mak nodebug=1"',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle "funorpain/vim-smali"
-NeoBundle 'kien/rainbow_parentheses.vim'
-NeoBundle 'PeterRincker/vim-argumentative'
-NeoBundle 'LaTeX-Box-Team/LaTeX-Box'
-NeoBundle 'jelera/vim-javascript-syntax'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'marijnh/tern_for_vim'
-NeoBundle 'dag/vim-fish'
-NeoBundle 'dockyard/vim-easydir'
-NeoBundle 'tejr/vim-tmux'
-NeoBundle 'terryma/vim-multiple-cursors'
+Plug 'Shougo/unite.vim'
+Plug 'Shougo/unite-outline'
+Plug 'nanotech/jellybeans.vim'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'funorpain/vim-smali'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'PeterRincker/vim-argumentative'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'pangloss/vim-javascript'
+Plug 'marijnh/tern_for_vim'
+Plug 'dag/vim-fish'
+Plug 'dockyard/vim-easydir'
+Plug 'tejr/vim-tmux'
+Plug 'terryma/vim-multiple-cursors'
 if !has('win32')
-    NeoBundle 'airblade/vim-gitgutter'
+    Plug 'airblade/vim-gitgutter'
 endif
-NeoBundle 'haya14busa/incsearch.vim'
+Plug 'haya14busa/incsearch.vim'
 if executable('tmux')
-    NeoBundle 'christoomey/vim-tmux-navigator'
+    Plug 'christoomey/vim-tmux-navigator'
 endif
-NeoBundle 'chrisbra/Recover.vim'
+Plug 'chrisbra/Recover.vim'
+if isdirectory(expand('~/.fzf'))
+  Plug 'junegunn/fzf', { 'dir': expand('~/.fzf') }
+endif
 
 " vim-scripts repos
-NeoBundle 'a.vim'
-NeoBundle 'renamer.vim'
-NeoBundle 'paredit.vim'
+Plug 'a.vim'
+Plug 'renamer.vim'
+Plug 'paredit.vim'
 
-" non github repos
-NeoBundle 'git@bitbucket.org:Leszek/cauv-messages.git'
+call plug#end()
 
-call neobundle#end()
 
-syntax on
-filetype plugin indent on
-
-NeoBundleCheck
+if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
+  PlugInstall | q
+endif

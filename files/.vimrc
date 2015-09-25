@@ -39,6 +39,9 @@ set spelllang=en_gb
 set completeopt=menu,preview,longest
 
 set undofile
+if !isdirectory($HOME . "/.vimundo")
+    call mkdir($HOME . "/.vimundo", "p", 0700)
+endif
 set undodir=$HOME/.vimundo/
 
 if &shell =~ '\<fish$'

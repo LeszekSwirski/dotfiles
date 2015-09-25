@@ -203,16 +203,6 @@ let g:pymode_folding = 0
 " Renamer
 let g:RenamerSupportColonWToRename = 1
 
-" MiniBufExplorer 
-let g:miniBufExplMapWindowNavVim = 1
-let g:miniBufExplMapWindowNavArrows = 1
-let g:miniBufExplMapCTabSwitchBufs = 1
-let g:miniBufExplUseSingleClick = 1
-let g:miniBufExplCheckDupeBufs = 0
-
-nnoremap <silent> [m :MBEbp<CR>
-nnoremap <silent> ]m :MBEbn<CR>
-
 " Easytags
 let g:easytags_suppress_ctags_warning=1
 let g:easytags_dynamic_files=1
@@ -260,12 +250,12 @@ map g# <Plug>(incsearch-nohl-g#)
 
 
 if $TERM=='screen'
-	exe "set title titlestring=vim:%f"
-	exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"
+    exe "set title titlestring=vim:%f"
+    exe "set title t_ts=\<ESC>k t_fs=\<ESC>\\"
 endif
 
 if $TERM=='screen' || $TERM=='xterm' || $TERM=='gnome-256color' || $TERM=='xterm-256color'
-	set ttymouse=xterm2
+    set ttymouse=xterm2
     set bg=dark
 endif
 colorscheme jellybeans
@@ -279,9 +269,9 @@ augroup END
 
 
 "if $TERM=='gnome-256color'
-"	set t_Co=256
-"	set t_Sf=^[[3%dm
-"	set t_Sb=^[[4%dm
+"   set t_Co=256
+"   set t_Sf=^[[3%dm
+"   set t_Sb=^[[4%dm
 "endif
 
 if filereadable($MYVIMRC . '.local')
@@ -292,3 +282,5 @@ if filereadable($MYVIMRC . '.local')
                     \ if has('gui_running') | source $MYGVIMRC | endif
     augroup END
 endif
+
+" vim: sw=4:ts=4

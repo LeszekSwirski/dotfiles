@@ -1,5 +1,5 @@
 if has("gui_gtk")
-    set guifont=Monospace\ 8
+    set guifont=Ubuntu\ Mono\ 11
 
     set guioptions-=T
     set guioptions-=m

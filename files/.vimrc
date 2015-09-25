@@ -1,7 +1,14 @@
-runtime bundles.vim
-
 set nocompatible
 set encoding=utf-8
+
+let s:google_dir = expand('~/.google.d/')
+let g:at_google = isdirectory(s:google_dir)
+if g:at_google
+    command! -nargs=1 Gsource exec 'source ' . s:google_dir . <f-args>
+    Gsource .vimrc.init
+endif
+
+runtime bundles.vim
 
 set mouse=a
 set number

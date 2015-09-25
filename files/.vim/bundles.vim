@@ -24,17 +24,25 @@ Plug 'vim-scripts/DirDiff.vim'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-shell'
-Plug 'scrooloose/syntastic'
+if g:at_google
+    Gsource .vim.syntastic
+else
+    Plug 'scrooloose/syntastic'
+endif
 Plug 'maxbrunsfeld/vim-yankstack'
 
-function! BuildYCM(info)
-    if has('unix')
-      !./install.sh --clang-completer
-    elseif has('win32')
-      exec '!start "Building YCM" "' . substitute(g:plug_home,'\\','/','g') . '/scripts/install-ycm.bat" ' . (has("win64") ? 'x64' : 'x86')'
-    endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+if g:at_google
+    Gsource .vim.ycm
+else
+    function! BuildYCM(info)
+        if has('unix')
+          !./install.sh --clang-completer
+        elseif has('win32')
+          exec '!start "Building YCM" "' . substitute(g:plug_home,'\\','/','g') . '/scripts/install-ycm.bat" ' . (has("win64") ? 'x64' : 'x86')'
+        endif
+    endfunction
+    Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+endif
 
 function! BuildVimProc(info)
     if has('win32unix')
@@ -84,6 +92,9 @@ Plug 'paredit.vim'
 
 call plug#end()
 
+if g:at_google
+    Gsource .vim.bundles
+endif
 
 if !empty(filter(copy(g:plugs), '!isdirectory(v:val.dir)'))
   PlugInstall | q

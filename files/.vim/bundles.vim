@@ -6,7 +6,8 @@ Plug 'tpope/vim-sensible'
 " better navigation
 Plug 'justinmk/vim-sneak'
 
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'chrisbra/SudoEdit.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'

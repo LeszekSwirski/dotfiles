@@ -276,6 +276,13 @@ augroup myvimrc
                 \ if has('gui_running') | source $MYGVIMRC | endif
 augroup END
 
+augroup myi3config
+    autocmd!
+    autocmd BufWritePost ${HOME}/.config/i3/config nested
+                \ silent exec "!i3-msg reload > /dev/null &" | 
+                \ redraw!
+augroup END
+
 
 "if $TERM=='gnome-256color'
 "   set t_Co=256

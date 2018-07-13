@@ -123,7 +123,7 @@ nmap ,p <Plug>yankstack_substitute_older_paste
 nmap ,P <Plug>yankstack_substitute_newer_paste
 
 " Sneak
-let g:sneak#streak = 1
+let g:sneak#label = 1
 "replace 'f' with inclusive 1-char Sneak
 nmap f <Plug>Sneak_f
 nmap F <Plug>Sneak_F
@@ -139,33 +139,32 @@ xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
 " explicitly map 's' because yankstack overwrites it
-nmap s <Plug>SneakForward
-nmap S <Plug>SneakBackward
-xmap s <Plug>VSneakForward
-xmap Z <Plug>VSneakBackward
+nmap s <Plug>Sneak_s
+nmap S <Plug>Sneak_S
+xmap s <Plug>Sneak_s
+xmap Z <Plug>Sneak_S
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_confirm_extra_conf = 0
 if has('win32')
     let g:ycm_path_to_python_interpreter = 'C:\Python27\pythonw.exe'
 endif
-nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap gd :YcmCompleter GoTo<CR>
 
 " Unite.vim
-let g:unite_source_history_yank_enable = 1
-let g:unite_winheight = 10
-let g:unite_split_rule = 'botright'
+"let g:unite_source_history_yank_enable = 1
+"let g:unite_winheight = 10
+"let g:unite_split_rule = 'botright'
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
 "call unite#filters#sorter_default#use(['sorter_reverse'])
-nnoremap <leader>t :<C-u>Unite -buffer-name=files   -start-insert file_rec/async:. file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files   -start-insert file<cr>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru     -start-insert file_mru<cr>
 nnoremap <leader>o :<C-u>Unite -buffer-name=outline -start-insert outline<cr>
-nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  -start-insert buffer<cr>
-nnoremap <leader>g :<C-u>Unite -buffer-name=grep  grep:.<cr>
+nnoremap <leader>g :<C-u>Unite -buffer-name=grep    grep:.<cr>
+nnoremap <leader>] :<C-u>UniteWithCursorWord -buffer-name=tag     -start-insert tag<cr>
 
 let g:unite_source_grep_max_candidates = 200
 
@@ -211,11 +210,13 @@ let g:pymode_folding = 0
 let g:RenamerSupportColonWToRename = 1
 
 " Easytags
+let g:easytags_auto_highlight=0
 let g:easytags_suppress_ctags_warning=1
 let g:easytags_dynamic_files=1
+let g:easytags_async=1
 "let g:easytags_autorecurse=1
 let g:easytags_python_enabled=1
-let g:easytags_on_cursorhold = 0
+let g:easytags_on_cursorhold=0
 
 noremap <silent> <F12> :UpdateTags<CR>
 inoremap <silent> <F12> <C-O>:UpdateTags<CR>
@@ -228,6 +229,7 @@ let g:airline_section_z="%P %l:%c"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " Gundo
 nnoremap U :GundoToggle<CR> 
@@ -256,7 +258,49 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+" Rainbow parens
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\	'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\	'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\	'operators': '_,_',
+\	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\	'separately': {
+\		'*': {},
+\       'cpp': {
+\           'parentheses': [
+\               'start=/(/ end=/)/ fold',
+\               'start=/\[/ end=/\]/ fold',
+\               'start=/{/ end=/}/ fold',
+\           ],
+\       },
+\		'lisp': {
+\			'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick', 'darkorchid3'],
+\		},
+\		'tex': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/'],
+\		},
+\		'vim': {
+\			'parentheses': ['start=/(/ end=/)/', 'start=/\[/ end=/\]/', 'start=/{/ end=/}/ fold', 'start=/(/ end=/)/ containedin=vimFuncBody', 'start=/\[/ end=/\]/ containedin=vimFuncBody', 'start=/{/ end=/}/ fold containedin=vimFuncBody'],
+\		},
+\		'xml': {
+\			'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'xhtml': {
+\			'parentheses': ['start=/\v\<\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'html': {
+\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold'],
+\		},
+\		'php': {
+\			'parentheses': ['start=/\v\<((area|base|br|col|embed|hr|img|input|keygen|link|menuitem|meta|param|source|track|wbr)[ >])@!\z([-_:a-zA-Z0-9]+)(\s+[-_:a-zA-Z0-9]+(\=("[^"]*"|'."'".'[^'."'".']*'."'".'|[^ '."'".'"><=`]*))?)*\>/ end=#</\z1># fold', 'start=/(/ end=/)/ containedin=@htmlPreproc contains=@phpClTop', 'start=/\[/ end=/\]/ containedin=@htmlPreproc contains=@phpClTop', 'start=/{/ end=/}/ containedin=@htmlPreproc contains=@phpClTop'],
+\		},
+\		'css': 0,
+\	}
+\}
 
+" FZF
+nnoremap <leader>f :Files<CR>
 
 if $TERM=='screen'
     exe "set title titlestring=vim:%f"
@@ -281,6 +325,15 @@ augroup myi3config
     autocmd BufWritePost ${HOME}/.config/i3/config nested
                 \ silent exec "!i3-msg reload > /dev/null &" | 
                 \ redraw!
+    autocmd BufWritePost ${HOME}/.i3status.conf,${HOME}/.py3status.conf nested
+                \ silent exec "!i3-msg restart > /dev/null &" | 
+                \ redraw!
+    autocmd BufWritePost ${HOME}/.config/dunst/dunstrc nested
+                \ silent exec "!killall dunst;notify-send 'Reloaded dunst' 'Dunst has been reloaded' -t 2 &" | 
+                \ redraw!
+
+
+
 augroup END
 
 
@@ -299,4 +352,4 @@ if filereadable($MYVIMRC . '.local')
     augroup END
 endif
 
-" vim: sw=4:ts=4
+" vim: sw=4:ts=4:tw=0

@@ -14,11 +14,10 @@ if which "pygmentize" >/dev/null 2>&1 ; then
     esac
 
     if [ -n "$is_256_term" ] ; then
-        pygmentize -g -f terminal256 -O style=native "$1"
+        pygmentize -s -g -f terminal256 -O style=native "$1"
     else
-        pygmentize -g -f terminal -O bg=dark "$1"
+        pygmentize -s -g -f terminal -O bg=dark "$1"
     fi
-    exit 0
 else
     exit 1
 fi

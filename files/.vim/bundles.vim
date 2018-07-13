@@ -5,6 +5,9 @@ Plug 'tpope/vim-sensible'
 
 " better navigation
 Plug 'justinmk/vim-sneak'
+Plug 'bkad/CamelCaseMotion'
+Plug 'kana/vim-textobj-user'
+Plug 'glts/vim-textobj-comment'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -17,6 +20,7 @@ Plug 'sjl/gundo.vim'
 Plug 'terryma/vim-expand-region'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-afterimage'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
@@ -60,10 +64,12 @@ Plug 'Shougo/vimproc.vim', { 'do': function('BuildVimProc') }
 
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
+Plug 'Shougo/neomru.vim'
+Plug 'tsukkee/unite-tag'
 Plug 'nanotech/jellybeans.vim'
 Plug 'jonathanfilip/vim-lucius'
 Plug 'funorpain/vim-smali'
-Plug 'kien/rainbow_parentheses.vim'
+Plug 'luochen1990/rainbow'
 Plug 'PeterRincker/vim-argumentative'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'jelera/vim-javascript-syntax'
@@ -72,10 +78,11 @@ Plug 'pangloss/vim-javascript'
 Plug 'marijnh/tern_for_vim'
 Plug 'dag/vim-fish'
 Plug 'dockyard/vim-easydir'
-Plug 'tejr/vim-tmux'
+Plug 'tmux-plugins/vim-tmux'
 Plug 'terryma/vim-multiple-cursors'
 if !has('win32')
     Plug 'airblade/vim-gitgutter'
+    Plug 'jreybert/vimagit'
 endif
 Plug 'haya14busa/incsearch.vim'
 if executable('tmux')
@@ -84,12 +91,14 @@ endif
 Plug 'chrisbra/Recover.vim'
 if isdirectory(expand('~/.fzf'))
   Plug 'junegunn/fzf', { 'dir': expand('~/.fzf') }
+  Plug 'junegunn/fzf.vim'
 endif
+Plug 'lyuts/vim-rtags'
 
 " vim-scripts repos
-Plug 'a.vim'
-Plug 'renamer.vim'
-Plug 'paredit.vim'
+Plug 'vim-scripts/a.vim'
+Plug 'vim-scripts/renamer.vim'
+Plug 'vim-scripts/paredit.vim'
 
 call plug#end()
 

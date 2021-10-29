@@ -89,14 +89,14 @@ vnoremap > >gv
 vnoremap < <gv
 
 " Select pasted text
-nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]' 
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " differences if in window in diff mode
 nnoremap <expr> <silent> <F3> (&diff ? "]c" : ":cnext\<CR>")
 nnoremap <expr> <silent> <F2> (&diff ? "[c" : ":cprev\<CR>")
 
 set tags+=tags;/
-set tagrelative 
+set tagrelative
 
 " Moving lines up and down
 nmap <M-j> mz:m+<CR>`z==
@@ -109,10 +109,13 @@ vmap <M-k> :m'<-2<CR>gv=`>my`<mzgv`yo`z
 " Open folds by default
 autocmd BufRead * normal zR
 
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+
 let g:GetLatestVimScripts_allowautoinstall=1
 
 
 set path+=/usr/local/include
+
 
 " Yankstack
 " Should be first so that other plugins can map yanking keys
@@ -121,6 +124,7 @@ call yankstack#setup()
 nmap <C-P> <Plug>yankstack_substitute_older_paste
 nmap ,p <Plug>yankstack_substitute_older_paste
 nmap ,P <Plug>yankstack_substitute_newer_paste
+
 
 " Sneak
 let g:sneak#label = 1
@@ -144,13 +148,123 @@ nmap S <Plug>Sneak_S
 xmap s <Plug>Sneak_s
 xmap Z <Plug>Sneak_S
 
+
+" coc.vim
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+
 " YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_confirm_extra_conf = 0
-if has('win32')
-    let g:ycm_path_to_python_interpreter = 'C:\Python27\pythonw.exe'
-endif
-nnoremap gd :YcmCompleter GoTo<CR>
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_confirm_extra_conf = 0
+"if has('win32')
+"    let g:ycm_path_to_python_interpreter = 'C:\Python27\pythonw.exe'
+"endif
+"nnoremap gd :YcmCompleter GoTo<CR>
+
 
 " Unite.vim
 "let g:unite_source_history_yank_enable = 1
@@ -198,16 +312,20 @@ function! s:unite_my_settings()
     endif
 endfunction
 
+
 " Syntastic
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_always_populate_loc_list = 1
+
 
 " Python-mode
 let g:pymode_lint = 0
 let g:pymode_folding = 0
 
+
 " Renamer
 let g:RenamerSupportColonWToRename = 1
+
 
 " Easytags
 let g:easytags_auto_highlight=0
@@ -221,18 +339,22 @@ let g:easytags_on_cursorhold=0
 noremap <silent> <F12> :UpdateTags<CR>
 inoremap <silent> <F12> <C-O>:UpdateTags<CR>
 
+
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 let g:airline_theme='wombat'
-let g:airline_section_z="%P %l:%c"
+let g:airline_section_z="%P %l:%c[%{line2byte(line('.')) + col('.') - 2}]"
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#coc#enabled = 1
+
 
 " Gundo
-nnoremap U :GundoToggle<CR> 
+nnoremap U :GundoToggle<CR>
+
 
 " LatexBox
 let g:LatexBox_latexmk_async = 1
@@ -240,8 +362,10 @@ let g:LatexBox_latexmk_preview_continuously = 1
 let g:LatexBox_quickfix = 2
 let g:LatexBox_latexmk_options = ' -shell-escape -synctex=1 '
 
+
 " Multiple cursors
 " cnoremap <C-N>  <CR>gn:<C-U>call multiple_cursors#find(line("'<"),line("'>"),@/)<CR>
+
 
 " Incsearch
 set hlsearch
@@ -257,6 +381,7 @@ map *  <Plug>(incsearch-nohl-*)
 map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
+
 
 " Rainbow parens
 let g:rainbow_active = 1
@@ -299,8 +424,10 @@ let g:rainbow_conf = {
 \	}
 \}
 
+
 " FZF
 nnoremap <leader>f :Files<CR>
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 if $TERM=='screen'
     exe "set title titlestring=vim:%f"
@@ -323,13 +450,13 @@ augroup END
 augroup myi3config
     autocmd!
     autocmd BufWritePost ${HOME}/.config/i3/config nested
-                \ silent exec "!i3-msg reload > /dev/null &" | 
+                \ silent exec "!i3-msg reload > /dev/null &" |
                 \ redraw!
     autocmd BufWritePost ${HOME}/.i3status.conf,${HOME}/.py3status.conf nested
-                \ silent exec "!i3-msg restart > /dev/null &" | 
+                \ silent exec "!i3-msg restart > /dev/null &" |
                 \ redraw!
     autocmd BufWritePost ${HOME}/.config/dunst/dunstrc nested
-                \ silent exec "!killall dunst;notify-send 'Reloaded dunst' 'Dunst has been reloaded' -t 2 &" | 
+                \ silent exec "!killall dunst;notify-send 'Reloaded dunst' 'Dunst has been reloaded' -t 2 &" |
                 \ redraw!
 
 
